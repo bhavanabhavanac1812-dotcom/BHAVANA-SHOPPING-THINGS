@@ -1,295 +1,726 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bhavana Shopping things</title>
+    <title>Bhavana Shopping | Beauty Store</title>
 
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
 
-body {
-    background: #fff5f8;
-    color: #333;
-}
+        body {
+            background: #fff5f8;
+            color: #333;
+        }
 
-header {
-    background: #ff6f9c;
-    color: white;
-    padding: 18px;
-    text-align: center;
-}
+        /* HEADER */
+        header {
+            background: #ff6699;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
 
-header h1 {
-    font-size: 28px;
-}
+        header h1 {
+            font-size: 28px;
+        }
 
-.cart {
-    margin-top: 8px;
-    font-size: 16px;
-}
+        .cart {
+            margin-top: 10px;
+            font-size: 17px;
+            cursor: pointer;
+            display: inline-block;
+        }
 
-.hero {
-    text-align: center;
-    padding: 35px 15px;
-    background: #ffe0eb;
-}
+        /* HERO */
+        .hero {
+            background: #ffe0eb;
+            text-align: center;
+            padding: 38px 20px;
+        }
 
-.hero h2 {
-    color: #d6336c;
-    font-size: 30px;
-    margin-bottom: 10px;
-}
+        .hero h2 {
+            color: #d62968;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
 
-.hero p {
-    font-size: 16px;
-}
+        .hero p {
+            font-size: 17px;
+        }
 
-.search-box {
-    text-align: center;
-    padding: 20px;
-}
+        /* SEARCH */
+        .search-area {
+            text-align: center;
+            padding: 22px 20px;
+        }
 
-.search-box input {
-    width: 90%;
-    max-width: 500px;
-    padding: 13px;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    font-size: 16px;
-}
+        .search-area input {
+            width: 80%;
+            max-width: 500px;
+            padding: 13px 18px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+        }
 
-.categories {
-    text-align: center;
-    padding: 10px;
-}
+        /* CATEGORIES */
+        .categories {
+            text-align: center;
+            margin: 10px 0 35px;
+        }
 
-.categories button {
-    background: #ff6f9c;
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    margin: 5px;
-    border-radius: 20px;
-    cursor: pointer;
-}
+        .categories button {
+            background: #ff6699;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+        }
 
-.categories button:hover {
-    background: #d6336c;
-}
+        .categories button:hover {
+            background: #e84f82;
+        }
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 25px;
-    max-width: 1100px;
-    margin: auto;
-}
+        /* PRODUCTS */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+            padding: 0 25px 40px;
+        }
 
-.product {
-    background: white;
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-}
+        .product {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
 
-.product .emoji {
-    font-size: 60px;
-    margin-bottom: 15px;
-}
+        .product-image {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
 
-.product h3 {
-    color: #d6336c;
-    margin-bottom: 8px;
-}
+        .product h3 {
+            color: #d62968;
+            margin-bottom: 10px;
+        }
 
-.product p {
-    margin-bottom: 12px;
-    font-weight: bold;
-}
+        .price {
+            font-weight: bold;
+            font-size: 17px;
+            margin-bottom: 15px;
+        }
 
-.product button {
-    background: #ff6f9c;
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 20px;
-    cursor: pointer;
-}
+        .add-btn {
+            background: #ff6699;
+            color: white;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+        }
 
-.product button:hover {
-    background: #d6336c;
-}
+        .add-btn:hover {
+            background: #e84f82;
+        }
 
-footer {
-    background: #ff6f9c;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 20px;
-}
+        /* CART POPUP */
+        .cart-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.45);
+            z-index: 999;
+        }
 
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 22px;
-    }
+        .cart-box {
+            background: white;
+            width: 400px;
+            max-width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 18px;
+            padding: 25px;
+        }
 
-    .hero h2 {
-        font-size: 24px;
-    }
+        .cart-box h2 {
+            color: #d62968;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    .products {
-        padding: 15px;
-    }
-}
-</style>
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            gap: 10px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info strong {
+            color: #d62968;
+        }
+
+        .quantity {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .remove-btn {
+            background: #ffdddd;
+            color: #d33;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .cart-total {
+            text-align: right;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #d62968;
+        }
+
+        .close-btn {
+            width: 100%;
+            background: #ff6699;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 25px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #ff6699;
+            color: white;
+            text-align: center;
+            padding: 18px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 23px;
+            }
+
+            .hero h2 {
+                font-size: 24px;
+            }
+
+            .search-area input {
+                width: 95%;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+                padding: 0 18px 30px;
+            }
+
+            .cart-box {
+                width: 92%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-    <h1>💗 BHAVANA SHOPPING</h1>
-    <div class="cart">🛒 Cart: <span id="cartCount">0</span></div>
-</header>
+    <!-- HEADER -->
+    <header>
 
-<section class="hero">
-    <h2>Beauty That Makes You Glow ✨</h2>
-    <p>Discover your favourite beauty products in one place.</p>
-</section>
+        <h1>💗 BHAVANA SHOPPING</h1>
 
-<div class="search-box">
-    <input 
-        type="text" 
-        id="searchInput" 
-        placeholder="🔍 Search beauty products..."
-        onkeyup="searchProducts()"
-    >
-</div>
+        <div class="cart" onclick="openCart()">
+            🛒 Cart: <span id="cartCount">0</span>
+        </div>
 
-<div class="categories">
-    <button onclick="filterProducts('All')">All</button>
-    <button onclick="filterProducts('Skincare')">Skincare</button>
-    <button onclick="filterProducts('Makeup')">Makeup</button>
-    <button onclick="filterProducts('Haircare')">Haircare</button>
-</div>
+    </header>
 
-<section class="products" id="productList">
 
-    <div class="product" data-category="Skincare">
-        <div class="emoji">🧴</div>
-        <h3>Hydrating Face Wash</h3>
-        <p>₹299</p>
-        <button onclick="addToCart()">Add to Cart</button>
+    <!-- HERO -->
+    <section class="hero">
+
+        <h2>Beauty That Makes You Glow ✨</h2>
+
+        <p>
+            Discover your favourite beauty products in one place.
+        </p>
+
+    </section>
+
+
+    <!-- SEARCH -->
+    <div class="search-area">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search beauty products..."
+            onkeyup="searchProducts()"
+        >
+
     </div>
 
-    <div class="product" data-category="Skincare">
-        <div class="emoji">✨</div>
-        <h3>Vitamin C Serum</h3>
-        <p>₹499</p>
-        <button onclick="addToCart()">Add to Cart</button>
+
+    <!-- CATEGORIES -->
+    <div class="categories">
+
+        <button onclick="filterProducts('All')">All</button>
+
+        <button onclick="filterProducts('Skincare')">
+            Skincare
+        </button>
+
+        <button onclick="filterProducts('Makeup')">
+            Makeup
+        </button>
+
+        <button onclick="filterProducts('Haircare')">
+            Haircare
+        </button>
+
     </div>
 
-    <div class="product" data-category="Skincare">
-        <div class="emoji">☀️</div>
-        <h3>Daily Sunscreen</h3>
-        <p>₹399</p>
-        <button onclick="addToCart()">Add to Cart</button>
+
+    <!-- PRODUCTS -->
+    <section class="products" id="productContainer">
+
+        <div class="product" data-category="Skincare">
+
+            <div class="product-image">🧴</div>
+
+            <h3>Hydrating Face Wash</h3>
+
+            <div class="price">₹299</div>
+
+            <button
+                class="add-btn"
+                onclick="addToCart('Hydrating Face Wash', 299)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <div class="product" data-category="Skincare">
+
+            <div class="product-image">✨</div>
+
+            <h3>Vitamin C Serum</h3>
+
+            <div class="price">₹499</div>
+
+            <button
+                class="add-btn"
+                onclick="addToCart('Vitamin C Serum', 499)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <div class="product" data-category="Skincare">
+
+            <div class="product-image">🌞</div>
+
+            <h3>Daily Sunscreen</h3>
+
+            <div class="price">₹399</div>
+
+            <button
+                class="add-btn"
+                onclick="addToCart('Daily Sunscreen', 399)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <div class="product" data-category="Makeup">
+
+            <div class="product-image">💄</div>
+
+            <h3>Matte Lipstick</h3>
+
+            <div class="price">₹349</div>
+
+            <button
+                class="add-btn"
+                onclick="addToCart('Matte Lipstick', 349)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <div class="product" data-category="Makeup">
+
+            <div class="product-image">💋</div>
+
+            <h3>Lip Gloss</h3>
+
+            <div class="price">₹279</div>
+
+            <button
+                class="add-btn"
+                onclick="addToCart('Lip Gloss', 279)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <div class="product" data-category="Makeup">
+
+            <div class="product-image">🪞</div>
+
+            <h3>Compact Powder</h3>
+
+            <div class="price">₹449</div>
+
+            <button
+                class="add-btn"
+                onclick="addToCart('Compact Powder', 449)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <div class="product" data-category="Haircare">
+
+            <div class="product-image">💆‍♀️</div>
+
+            <h3>Hair Serum</h3>
+
+            <div class="price">₹399</div>
+
+            <button
+                class="add-btn"
+                onclick="addToCart('Hair Serum', 399)">
+                Add to Cart
+            </button>
+
+        </div>
+
+
+        <div class="product" data-category="Haircare">
+
+            <div class="product-image">🧴</div>
+
+            <h3>Shampoo</h3>
+
+            <div class="price">₹349</div>
+
+            <button
+                class="add-btn"
+                onclick="addToCart('Shampoo', 349)">
+                Add to Cart
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CART POPUP -->
+
+    <div class="cart-overlay" id="cartOverlay">
+
+        <div class="cart-box">
+
+            <h2>🛒 Your Cart</h2>
+
+            <div id="cartItems">
+                <div class="empty-cart">
+                    Your cart is empty.
+                </div>
+            </div>
+
+            <div class="cart-total">
+                Total: ₹<span id="cartTotal">0</span>
+            </div>
+
+            <button class="close-btn" onclick="closeCart()">
+                Close Cart
+            </button>
+
+        </div>
+
     </div>
 
-    <div class="product" data-category="Makeup">
-        <div class="emoji">💄</div>
-        <h3>Matte Lipstick</h3>
-        <p>₹349</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
 
-    <div class="product" data-category="Makeup">
-        <div class="emoji">💋</div>
-        <h3>Lip Gloss</h3>
-        <p>₹279</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
+    <!-- FOOTER -->
 
-    <div class="product" data-category="Makeup">
-        <div class="emoji">🪞</div>
-        <h3>Compact Powder</h3>
-        <p>₹449</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
+    <footer>
 
-    <div class="product" data-category="Haircare">
-        <div class="emoji">💇‍♀️</div>
-        <h3>Hair Serum</h3>
-        <p>₹399</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
+        Your Beauty, Your Style, Your Glow ✨
 
-    <div class="product" data-category="Haircare">
-        <div class="emoji">🧴</div>
-        <h3>Shampoo</h3>
-        <p>₹349</p>
-        <button onclick="addToCart()">Add to Cart</button>
-    </div>
+    </footer>
 
-</section>
 
-<footer>
-    <p>Your Beauty, Your Style, Your Glow ✨</p>
-    <p>© 2026 Bhavana Shopping</p>
-</footer>
+    <!-- JAVASCRIPT -->
 
-<script>
+    <script>
 
-let cartCount = 0;
+        let cart = [];
 
-function addToCart() {
-    cartCount++;
-    document.getElementById("cartCount").innerText = cartCount;
-    alert("Product added to cart 🛒");
-}
 
-function filterProducts(category) {
+        // ADD PRODUCT TO CART
 
-    let products = document.querySelectorAll(".product");
+        function addToCart(name, price) {
 
-    products.forEach(function(product) {
+            let existingProduct = cart.find(
+                item => item.name === name
+            );
 
-        if (category === "All" || product.dataset.category === category) {
-            product.style.display = "block";
-        } else {
-            product.style.display = "none";
+            if (existingProduct) {
+
+                existingProduct.quantity++;
+
+            } else {
+
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: 1
+                });
+
+            }
+
+            updateCartCount();
+
+            alert(name + " added to cart 🛒");
+
         }
 
-    });
-}
 
-function searchProducts() {
+        // UPDATE CART COUNT
 
-    let search = document.getElementById("searchInput").value.toLowerCase();
-    let products = document.querySelectorAll(".product");
+        function updateCartCount() {
 
-    products.forEach(function(product) {
+            let totalQuantity = cart.reduce(
+                (total, item) => total + item.quantity,
+                0
+            );
 
-        let name = product.querySelector("h3").innerText.toLowerCase();
+            document.getElementById("cartCount").innerText =
+                totalQuantity;
 
-        if (name.includes(search)) {
-            product.style.display = "block";
-        } else {
-            product.style.display = "none";
         }
 
-    });
-}
 
-</script>
+        // OPEN CART
+
+        function openCart() {
+
+            document.getElementById("cartOverlay").style.display =
+                "block";
+
+            displayCart();
+
+        }
+
+
+        // CLOSE CART
+
+        function closeCart() {
+
+            document.getElementById("cartOverlay").style.display =
+                "none";
+
+        }
+
+
+        // DISPLAY CART ITEMS
+
+        function displayCart() {
+
+            let cartItems =
+                document.getElementById("cartItems");
+
+            let cartTotal =
+                document.getElementById("cartTotal");
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML =
+                    '<div class="empty-cart">Your cart is empty.</div>';
+
+                cartTotal.innerText = "0";
+
+                return;
+            }
+
+
+            let html = "";
+            let total = 0;
+
+
+            cart.forEach((item, index) => {
+
+                let itemTotal =
+                    item.price * item.quantity;
+
+                total += itemTotal;
+
+
+                html += `
+
+                    <div class="cart-item">
+
+                        <div class="cart-item-info">
+
+                            <strong>
+                                ${item.name}
+                            </strong>
+
+                            <div class="quantity">
+                                ₹${item.price} × ${item.quantity}
+                            </div>
+
+                        </div>
+
+                        <div>
+                            ₹${itemTotal}
+                        </div>
+
+                        <button
+                            class="remove-btn"
+                            onclick="removeFromCart(${index})">
+
+                            Remove
+
+                        </button>
+
+                    </div>
+
+                `;
+
+            });
+
+
+            cartItems.innerHTML = html;
+
+            cartTotal.innerText = total;
+
+        }
+
+
+        // REMOVE PRODUCT
+
+        function removeFromCart(index) {
+
+            cart.splice(index, 1);
+
+            updateCartCount();
+
+            displayCart();
+
+        }
+
+
+        // SEARCH PRODUCTS
+
+        function searchProducts() {
+
+            let searchText =
+                document.getElementById("searchInput")
+                .value
+                .toLowerCase();
+
+            let products =
+                document.querySelectorAll(".product");
+
+
+            products.forEach(product => {
+
+                let productName =
+                    product.querySelector("h3")
+                    .innerText
+                    .toLowerCase();
+
+
+                if (productName.includes(searchText)) {
+
+                    product.style.display = "block";
+
+                } else {
+
+                    product.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+        // FILTER PRODUCTS
+
+        function filterProducts(category) {
+
+            let products =
+                document.querySelectorAll(".product");
+
+
+            products.forEach(product => {
+
+                if (
+                    category === "All" ||
+                    product.dataset.category === category
+                ) {
+
+                    product.style.display = "block";
+
+                } else {
+
+                    product.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+    </script>
 
 </body>
 </html>
