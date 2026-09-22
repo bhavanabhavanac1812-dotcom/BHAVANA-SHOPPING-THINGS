@@ -1,11 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bhavana Shopping things</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #fff5f8;
+    color: #333;
+}
+
+header {
+    background: #ff6f9c;
+    color: white;
+    padding: 18px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 28px;
+}
+
+.cart {
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+.hero {
+    text-align: center;
+    padding: 35px 15px;
+    background: #ffe0eb;
+}
+
+.hero h2 {
+    color: #d6336c;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 16px;
+}
+
+.search-box {
+    text-align: center;
+    padding: 20px;
+}
+
+.search-box input {
+    width: 90%;
+    max-width: 500px;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-size: 16px;
+}
+
+.categories {
+    text-align: center;
+    padding: 10px;
+}
+
+.categories button {
+    background: #ff6f9c;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.categories button:hover {
+    background: #d6336c;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.product {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+}
+
+.product .emoji {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.product h3 {
+    color: #d6336c;
+    margin-bottom: 8px;
+}
+
+.product p {
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.product button {
+    background: #ff6f9c;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.product button:hover {
+    background: #d6336c;
+}
+
+footer {
+    background: #ff6f9c;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 22px;
+    }
+
+    .hero h2 {
+        font-size: 24px;
+    }
+
+    .products {
+        padding: 15px;
+    }
+}
+</style>
+</head>
+
 <body>
 
-<h1>Welcome to Notes Website</h1>
+<header>
+    <h1>💗 BHAVANA SHOPPING</h1>
+    <div class="cart">🛒 Cart: <span id="cartCount">0</span></div>
+</header>
 
-<a href="java.html">
-    <button>View Notes</button>
-</a>
+<section class="hero">
+    <h2>Beauty That Makes You Glow ✨</h2>
+    <p>Discover your favourite beauty products in one place.</p>
+</section>
 
-<script src="script.js"></script>
+<div class="search-box">
+    <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="🔍 Search beauty products..."
+        onkeyup="searchProducts()"
+    >
+</div>
+
+<div class="categories">
+    <button onclick="filterProducts('All')">All</button>
+    <button onclick="filterProducts('Skincare')">Skincare</button>
+    <button onclick="filterProducts('Makeup')">Makeup</button>
+    <button onclick="filterProducts('Haircare')">Haircare</button>
+</div>
+
+<section class="products" id="productList">
+
+    <div class="product" data-category="Skincare">
+        <div class="emoji">🧴</div>
+        <h3>Hydrating Face Wash</h3>
+        <p>₹299</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="Skincare">
+        <div class="emoji">✨</div>
+        <h3>Vitamin C Serum</h3>
+        <p>₹499</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="Skincare">
+        <div class="emoji">☀️</div>
+        <h3>Daily Sunscreen</h3>
+        <p>₹399</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="Makeup">
+        <div class="emoji">💄</div>
+        <h3>Matte Lipstick</h3>
+        <p>₹349</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="Makeup">
+        <div class="emoji">💋</div>
+        <h3>Lip Gloss</h3>
+        <p>₹279</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="Makeup">
+        <div class="emoji">🪞</div>
+        <h3>Compact Powder</h3>
+        <p>₹449</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="Haircare">
+        <div class="emoji">💇‍♀️</div>
+        <h3>Hair Serum</h3>
+        <p>₹399</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <div class="product" data-category="Haircare">
+        <div class="emoji">🧴</div>
+        <h3>Shampoo</h3>
+        <p>₹349</p>
+        <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+</section>
+
+<footer>
+    <p>Your Beauty, Your Style, Your Glow ✨</p>
+    <p>© 2026 Bhavana Shopping</p>
+</footer>
+
+<script>
+
+let cartCount = 0;
+
+function addToCart() {
+    cartCount++;
+    document.getElementById("cartCount").innerText = cartCount;
+    alert("Product added to cart 🛒");
+}
+
+function filterProducts(category) {
+
+    let products = document.querySelectorAll(".product");
+
+    products.forEach(function(product) {
+
+        if (category === "All" || product.dataset.category === category) {
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+
+    });
+}
+
+function searchProducts() {
+
+    let search = document.getElementById("searchInput").value.toLowerCase();
+    let products = document.querySelectorAll(".product");
+
+    products.forEach(function(product) {
+
+        let name = product.querySelector("h3").innerText.toLowerCase();
+
+        if (name.includes(search)) {
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+
+    });
+}
+
+</script>
 
 </body>
+</html>
