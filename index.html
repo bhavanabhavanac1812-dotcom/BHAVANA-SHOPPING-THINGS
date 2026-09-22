@@ -1,726 +1,1011 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhavana Shopping | Beauty Store</title>
 
-    <title>Bhavana Shopping | Beauty Store</title>
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+body{
+    background:#fff7fa;
+    color:#333;
+}
 
-        body {
-            background: #fff5f8;
-            color: #333;
-        }
+header{
+    background:#ff4f87;
+    color:white;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
 
-        /* HEADER */
-        header {
-            background: #ff6699;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+.logo{
+    font-size:24px;
+    font-weight:bold;
+}
 
-        header h1 {
-            font-size: 28px;
-        }
+nav{
+    display:flex;
+    gap:18px;
+    align-items:center;
+}
 
-        .cart {
-            margin-top: 10px;
-            font-size: 17px;
-            cursor: pointer;
-            display: inline-block;
-        }
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
 
-        /* HERO */
-        .hero {
-            background: #ffe0eb;
-            text-align: center;
-            padding: 38px 20px;
-        }
+.cart{
+    background:white;
+    color:#ff3f7f;
+    padding:9px 15px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+}
 
-        .hero h2 {
-            color: #d62968;
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
+.hero{
+    text-align:center;
+    padding:55px 20px;
+    background:linear-gradient(135deg,#ffd3e2,#fff);
+}
 
-        .hero p {
-            font-size: 17px;
-        }
+.hero h1{
+    font-size:38px;
+    color:#e8326c;
+    margin-bottom:12px;
+}
 
-        /* SEARCH */
-        .search-area {
-            text-align: center;
-            padding: 22px 20px;
-        }
+.hero p{
+    font-size:18px;
+    margin-bottom:25px;
+}
 
-        .search-area input {
-            width: 80%;
-            max-width: 500px;
-            padding: 13px 18px;
-            border: 1px solid #ddd;
-            border-radius: 25px;
-            font-size: 16px;
-            outline: none;
-        }
+.search{
+    width:90%;
+    max-width:600px;
+    padding:14px 18px;
+    border:2px solid #ff9fbd;
+    border-radius:30px;
+    outline:none;
+    font-size:16px;
+}
 
-        /* CATEGORIES */
-        .categories {
-            text-align: center;
-            margin: 10px 0 35px;
-        }
+section{
+    padding:35px 6%;
+}
 
-        .categories button {
-            background: #ff6699;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            border-radius: 25px;
-            cursor: pointer;
-        }
+.section-title{
+    text-align:center;
+    color:#e8326c;
+    margin-bottom:25px;
+    font-size:28px;
+}
 
-        .categories button:hover {
-            background: #e84f82;
-        }
+.categories{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
 
-        /* PRODUCTS */
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 20px;
-            padding: 0 25px 40px;
-        }
+.categories button{
+    border:none;
+    background:#ffd4e1;
+    color:#d92861;
+    padding:10px 18px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+}
 
-        .product {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
+.categories button:hover{
+    background:#ff4f87;
+    color:white;
+}
 
-        .product-image {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:22px;
+}
 
-        .product h3 {
-            color: #d62968;
-            margin-bottom: 10px;
-        }
+.product{
+    background:white;
+    border-radius:15px;
+    padding:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+    transition:.2s;
+}
 
-        .price {
-            font-weight: bold;
-            font-size: 17px;
-            margin-bottom: 15px;
-        }
+.product:hover{
+    transform:translateY(-4px);
+}
 
-        .add-btn {
-            background: #ff6699;
-            color: white;
-            border: none;
-            padding: 11px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-        }
+.product img{
+    width:100%;
+    height:210px;
+    object-fit:contain;
+    border-radius:12px;
+    background:#fff;
+}
 
-        .add-btn:hover {
-            background: #e84f82;
-        }
+.brand{
+    color:#e8326c;
+    font-weight:bold;
+    margin-top:12px;
+    font-size:14px;
+}
 
-        /* CART POPUP */
-        .cart-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.45);
-            z-index: 999;
-        }
+.product h3{
+    margin:6px 0;
+    font-size:17px;
+}
 
-        .cart-box {
-            background: white;
-            width: 400px;
-            max-width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 18px;
-            padding: 25px;
-        }
+.rating{
+    color:#f5a623;
+    font-size:14px;
+}
 
-        .cart-box h2 {
-            color: #d62968;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.price{
+    margin:8px 0;
+}
 
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-            gap: 10px;
-        }
+.old{
+    text-decoration:line-through;
+    color:#999;
+    margin-right:7px;
+}
 
-        .cart-item-info {
-            flex: 1;
-        }
+.new{
+    color:#e8326c;
+    font-size:20px;
+    font-weight:bold;
+}
 
-        .cart-item-info strong {
-            color: #d62968;
-        }
+.product button,
+.checkout-btn,
+.order-btn{
+    width:100%;
+    padding:11px;
+    border:none;
+    border-radius:8px;
+    background:#ff4f87;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    margin-top:8px;
+}
 
-        .quantity {
-            font-size: 14px;
-            margin-top: 5px;
-        }
+.product button:hover,
+.checkout-btn:hover,
+.order-btn:hover{
+    background:#e8326c;
+}
 
-        .remove-btn {
-            background: #ffdddd;
-            color: #d33;
-            border: none;
-            padding: 6px 10px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+/* CART */
+.overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    z-index:200;
+}
 
-        .cart-total {
-            text-align: right;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 20px;
-            color: #d62968;
-        }
+.box{
+    background:white;
+    width:92%;
+    max-width:500px;
+    max-height:90vh;
+    overflow:auto;
+    margin:5vh auto;
+    padding:25px;
+    border-radius:18px;
+}
 
-        .close-btn {
-            width: 100%;
-            background: #ff6699;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 25px;
-            margin-top: 20px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+.close{
+    float:right;
+    font-size:25px;
+    cursor:pointer;
+    color:#e8326c;
+}
 
-        .empty-cart {
-            text-align: center;
-            padding: 20px;
-            color: #777;
-        }
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    border-bottom:1px solid #eee;
+    padding:12px 0;
+}
 
-        /* FOOTER */
-        footer {
-            background: #ff6699;
-            color: white;
-            text-align: center;
-            padding: 18px;
-        }
+.remove{
+    border:none;
+    background:#ffd9e5;
+    color:#d92861;
+    padding:6px 10px;
+    border-radius:6px;
+    cursor:pointer;
+}
 
-        /* MOBILE */
-        @media (max-width: 600px) {
+.total{
+    text-align:right;
+    font-size:20px;
+    font-weight:bold;
+    color:#e8326c;
+    margin-top:18px;
+}
 
-            header h1 {
-                font-size: 23px;
-            }
+/* CHECKOUT */
+.form-group{
+    margin-bottom:14px;
+}
 
-            .hero h2 {
-                font-size: 24px;
-            }
+.form-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:6px;
+}
 
-            .search-area input {
-                width: 95%;
-            }
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    outline:none;
+}
 
-            .products {
-                grid-template-columns: 1fr;
-                padding: 0 18px 30px;
-            }
+.form-group textarea{
+    height:80px;
+    resize:none;
+}
 
-            .cart-box {
-                width: 92%;
-            }
-        }
-    </style>
+.payment{
+    margin:15px 0;
+}
+
+.payment label{
+    display:block;
+    margin:9px 0;
+}
+
+.success{
+    text-align:center;
+    padding:30px 10px;
+}
+
+.success h2{
+    color:#e8326c;
+    margin-bottom:15px;
+}
+
+footer{
+    text-align:center;
+    background:#ff4f87;
+    color:white;
+    padding:25px;
+    margin-top:30px;
+}
+
+@media(max-width:700px){
+    header{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    nav{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header>
+<header>
+    <div class="logo">💗 BHAVANA SHOPPING</div>
 
-        <h1>💗 BHAVANA SHOPPING</h1>
-
+    <nav>
+        <a onclick="goHome()">Home</a>
+        <a onclick="showBrands()">Brands</a>
+        <a onclick="goProducts()">Products</a>
         <div class="cart" onclick="openCart()">
-            🛒 Cart: <span id="cartCount">0</span>
+            🛒 Cart (<span id="cartCount">0</span>)
+        </div>
+    </nav>
+</header>
+
+<div class="hero" id="home">
+    <h1>Beauty That Makes You Glow ✨</h1>
+    <p>Shop your favourite beauty products in one place 💕</p>
+
+    <input
+        class="search"
+        id="search"
+        type="text"
+        placeholder="Search face wash, serum, lipstick..."
+        oninput="searchProducts()"
+    >
+</div>
+
+<section id="brands">
+    <h2 class="section-title">Popular Brands 🏷️</h2>
+
+    <div class="categories">
+        <button onclick="filterBrand('all')">All</button>
+        <button onclick="filterBrand('Lakmé')">Lakmé</button>
+        <button onclick="filterBrand('The Derma Co')">The Derma Co</button>
+        <button onclick="filterBrand('PLIX')">PLIX</button>
+        <button onclick="filterBrand('NIVEA')">NIVEA</button>
+        <button onclick="filterBrand('Pond’s')">Pond's</button>
+        <button onclick="filterBrand('Minimalist')">Minimalist</button>
+        <button onclick="filterBrand('Dot & Key')">Dot & Key</button>
+        <button onclick="filterBrand('Maybelline')">Maybelline</button>
+        <button onclick="filterBrand('L’Oréal')">L'Oréal</button>
+    </div>
+</section>
+
+<section id="productsSection">
+
+    <h2 class="section-title">Beauty Products 🧴💄</h2>
+
+    <div class="categories">
+        <button onclick="filterCategory('all')">All</button>
+        <button onclick="filterCategory('Skincare')">Skincare</button>
+        <button onclick="filterCategory('Makeup')">Makeup</button>
+        <button onclick="filterCategory('Haircare')">Haircare</button>
+    </div>
+
+    <div class="products" id="products"></div>
+
+</section>
+
+
+<!-- CART POPUP -->
+
+<div class="overlay" id="cartOverlay">
+
+    <div class="box">
+
+        <span class="close" onclick="closeCart()">×</span>
+
+        <h2 class="section-title">Your Cart 🛒</h2>
+
+        <div id="cartItems"></div>
+
+        <div class="total">
+            Total: ₹<span id="cartTotal">0</span>
         </div>
 
-    </header>
+        <button class="checkout-btn" onclick="openCheckout()">
+            Proceed to Checkout
+        </button>
+
+    </div>
+
+</div>
 
 
-    <!-- HERO -->
-    <section class="hero">
+<!-- CHECKOUT POPUP -->
 
-        <h2>Beauty That Makes You Glow ✨</h2>
+<div class="overlay" id="checkoutOverlay">
 
-        <p>
-            Discover your favourite beauty products in one place.
+    <div class="box">
+
+        <span class="close" onclick="closeCheckout()">×</span>
+
+        <h2 class="section-title">Checkout 📦</h2>
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input id="customerName" type="text" placeholder="Enter your name">
+        </div>
+
+        <div class="form-group">
+            <label>Mobile Number</label>
+            <input id="customerPhone" type="tel" placeholder="Enter mobile number">
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input id="customerEmail" type="email" placeholder="Enter email">
+        </div>
+
+        <div class="form-group">
+            <label>Address</label>
+            <textarea id="customerAddress" placeholder="Enter full delivery address"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Pincode</label>
+            <input id="customerPin" type="number" placeholder="Enter pincode">
+        </div>
+
+        <div class="form-group">
+            <label>City</label>
+            <input id="customerCity" type="text" placeholder="Enter city">
+        </div>
+
+        <div class="form-group">
+            <label>Payment Method</label>
+
+            <div class="payment">
+                <label>
+                    <input type="radio" name="payment" value="Cash on Delivery">
+                    Cash on Delivery
+                </label>
+
+                <label>
+                    <input type="radio" name="payment" value="UPI">
+                    UPI
+                </label>
+
+                <label>
+                    <input type="radio" name="payment" value="Card">
+                    Credit / Debit Card
+                </label>
+            </div>
+        </div>
+
+        <button class="order-btn" onclick="placeOrder()">
+            Place Order ✅
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ORDER SUCCESS -->
+
+<div class="overlay" id="successOverlay">
+
+    <div class="box success">
+
+        <h2>🎉 Order Placed Successfully!</h2>
+
+        <p>Thank you for shopping with <b>BHAVANA SHOPPING</b> 💗</p>
+
+        <p style="margin-top:12px;">
+            Order ID:
+            <b id="orderId"></b>
         </p>
 
-    </section>
-
-
-    <!-- SEARCH -->
-    <div class="search-area">
-
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="🔍 Search beauty products..."
-            onkeyup="searchProducts()"
-        >
-
-    </div>
-
-
-    <!-- CATEGORIES -->
-    <div class="categories">
-
-        <button onclick="filterProducts('All')">All</button>
-
-        <button onclick="filterProducts('Skincare')">
-            Skincare
-        </button>
-
-        <button onclick="filterProducts('Makeup')">
-            Makeup
-        </button>
-
-        <button onclick="filterProducts('Haircare')">
-            Haircare
+        <button class="order-btn" onclick="closeSuccess()">
+            Continue Shopping 🛍️
         </button>
 
     </div>
 
-
-    <!-- PRODUCTS -->
-    <section class="products" id="productContainer">
-
-        <div class="product" data-category="Skincare">
-
-            <div class="product-image">🧴</div>
-
-            <h3>Hydrating Face Wash</h3>
-
-            <div class="price">₹299</div>
-
-            <button
-                class="add-btn"
-                onclick="addToCart('Hydrating Face Wash', 299)">
-                Add to Cart
-            </button>
-
-        </div>
+</div>
 
 
-        <div class="product" data-category="Skincare">
-
-            <div class="product-image">✨</div>
-
-            <h3>Vitamin C Serum</h3>
-
-            <div class="price">₹499</div>
-
-            <button
-                class="add-btn"
-                onclick="addToCart('Vitamin C Serum', 499)">
-                Add to Cart
-            </button>
-
-        </div>
+<footer>
+    Your Beauty, Your Style, Your Glow ✨
+    <br><br>
+    © 2026 Bhavana Shopping
+</footer>
 
 
-        <div class="product" data-category="Skincare">
+<script>
 
-            <div class="product-image">🌞</div>
+const products = [
 
-            <h3>Daily Sunscreen</h3>
+{
+brand:"Lakmé",
+name:"Lakmé Absolute Perfect Radiance Face Wash",
+price:299,
+old:349,
+category:"Skincare",
+rating:"4.4",
+image:"https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=500&q=80"
+},
 
-            <div class="price">₹399</div>
+{
+brand:"Lakmé",
+name:"Lakmé Sun Expert Sunscreen SPF 50",
+price:399,
+old:499,
+category:"Skincare",
+rating:"4.5",
+image:"https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=500&q=80"
+},
 
-            <button
-                class="add-btn"
-                onclick="addToCart('Daily Sunscreen', 399)">
-                Add to Cart
-            </button>
+{
+brand:"The Derma Co",
+name:"10% Vitamin C Face Serum",
+price:499,
+old:599,
+category:"Skincare",
+rating:"4.6",
+image:"https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=500&q=80"
+},
 
-        </div>
+{
+brand:"The Derma Co",
+name:"1% Hyaluronic Sunscreen Aqua Gel",
+price:449,
+old:599,
+category:"Skincare",
+rating:"4.5",
+image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=500&q=80"
+},
+
+{
+brand:"PLIX",
+name:"PLIX Vitamin C Face Serum",
+price:549,
+old:699,
+category:"Skincare",
+rating:"4.4",
+image:"https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=500&q=80"
+},
+
+{
+brand:"PLIX",
+name:"PLIX Fruit AHA Face Wash",
+price:349,
+old:449,
+category:"Skincare",
+rating:"4.3",
+image:"https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=500&q=80"
+},
+
+{
+brand:"NIVEA",
+name:"NIVEA Soft Light Moisturizer",
+price:249,
+old:299,
+category:"Skincare",
+rating:"4.5",
+image:"https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=500&q=80"
+},
+
+{
+brand:"NIVEA",
+name:"NIVEA Cherry Shine Lip Balm",
+price:199,
+old:249,
+category:"Makeup",
+rating:"4.4",
+image:"https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=500&q=80"
+},
+
+{
+brand:"Pond’s",
+name:"Pond's Bright Beauty Face Wash",
+price:229,
+old:299,
+category:"Skincare",
+rating:"4.3",
+image:"https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=500&q=80"
+},
+
+{
+brand:"Pond’s",
+name:"Pond's Light Moisturiser",
+price:199,
+old:249,
+category:"Skincare",
+rating:"4.2",
+image:"https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=500&q=80"
+},
+
+{
+brand:"Minimalist",
+name:"Minimalist 10% Vitamin B5 Serum",
+price:399,
+old:499,
+category:"Skincare",
+rating:"4.6",
+image:"https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=500&q=80"
+},
+
+{
+brand:"Dot & Key",
+name:"Dot & Key Watermelon Sunscreen",
+price:495,
+old:595,
+category:"Skincare",
+rating:"4.5",
+image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=500&q=80"
+},
+
+{
+brand:"Maybelline",
+name:"Maybelline Matte Lipstick",
+price:399,
+old:499,
+category:"Makeup",
+rating:"4.5",
+image:"https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=500&q=80"
+},
+
+{
+brand:"Maybelline",
+name:"Maybelline Fit Me Compact Powder",
+price:449,
+old:549,
+category:"Makeup",
+rating:"4.4",
+image:"https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=500&q=80"
+},
+
+{
+brand:"L’Oréal",
+name:"L'Oréal Paris Shampoo",
+price:399,
+old:499,
+category:"Haircare",
+rating:"4.5",
+image:"https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=500&q=80"
+},
+
+{
+brand:"L’Oréal",
+name:"L'Oréal Hair Serum",
+price:549,
+old:699,
+category:"Haircare",
+rating:"4.6",
+image:"https://images.unsplash.com/photo-1522338242992-e1a54906a8da?auto=format&fit=crop&w=500&q=80"
+},
+
+{
+brand:"Mamaearth",
+name:"Mamaearth Onion Hair Serum",
+price:399,
+old:499,
+category:"Haircare",
+rating:"4.3",
+image:"https://images.unsplash.com/photo-1522338242992-e1a54906a8da?auto=format&fit=crop&w=500&q=80"
+},
+
+{
+brand:"Dot & Key",
+name:"Dot & Key Barrier Repair Moisturizer",
+price:425,
+old:495,
+category:"Skincare",
+rating:"4.5",
+image:"https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=500&q=80"
+}
+
+];
+
+let cart = [];
+let currentProducts = products;
 
 
-        <div class="product" data-category="Makeup">
+function displayProducts(list){
 
-            <div class="product-image">💄</div>
+    const container = document.getElementById("products");
 
-            <h3>Matte Lipstick</h3>
+    container.innerHTML = "";
 
-            <div class="price">₹349</div>
+    if(list.length === 0){
+        container.innerHTML =
+        "<p style='text-align:center;width:100%;'>No products found 😔</p>";
+        return;
+    }
 
-            <button
-                class="add-btn"
-                onclick="addToCart('Matte Lipstick', 349)">
-                Add to Cart
-            </button>
+    list.forEach((product,index)=>{
 
-        </div>
+        container.innerHTML += `
 
+        <div class="product">
 
-        <div class="product" data-category="Makeup">
+            <img src="${product.image}" alt="${product.name}">
 
-            <div class="product-image">💋</div>
+            <div class="brand">${product.brand}</div>
 
-            <h3>Lip Gloss</h3>
+            <h3>${product.name}</h3>
 
-            <div class="price">₹279</div>
-
-            <button
-                class="add-btn"
-                onclick="addToCart('Lip Gloss', 279)">
-                Add to Cart
-            </button>
-
-        </div>
-
-
-        <div class="product" data-category="Makeup">
-
-            <div class="product-image">🪞</div>
-
-            <h3>Compact Powder</h3>
-
-            <div class="price">₹449</div>
-
-            <button
-                class="add-btn"
-                onclick="addToCart('Compact Powder', 449)">
-                Add to Cart
-            </button>
-
-        </div>
-
-
-        <div class="product" data-category="Haircare">
-
-            <div class="product-image">💆‍♀️</div>
-
-            <h3>Hair Serum</h3>
-
-            <div class="price">₹399</div>
-
-            <button
-                class="add-btn"
-                onclick="addToCart('Hair Serum', 399)">
-                Add to Cart
-            </button>
-
-        </div>
-
-
-        <div class="product" data-category="Haircare">
-
-            <div class="product-image">🧴</div>
-
-            <h3>Shampoo</h3>
-
-            <div class="price">₹349</div>
-
-            <button
-                class="add-btn"
-                onclick="addToCart('Shampoo', 349)">
-                Add to Cart
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- CART POPUP -->
-
-    <div class="cart-overlay" id="cartOverlay">
-
-        <div class="cart-box">
-
-            <h2>🛒 Your Cart</h2>
-
-            <div id="cartItems">
-                <div class="empty-cart">
-                    Your cart is empty.
-                </div>
+            <div class="rating">
+                ⭐ ${product.rating}
             </div>
 
-            <div class="cart-total">
-                Total: ₹<span id="cartTotal">0</span>
+            <div class="price">
+                <span class="old">₹${product.old}</span>
+                <span class="new">₹${product.price}</span>
             </div>
 
-            <button class="close-btn" onclick="closeCart()">
-                Close Cart
+            <button onclick="addToCart(${index})">
+                🛒 Add to Cart
+            </button>
+
+            <button onclick="buyNow(${index})">
+                ⚡ Buy Now
             </button>
 
         </div>
 
-    </div>
+        `;
 
+    });
+}
 
-    <!-- FOOTER -->
 
-    <footer>
+function addToCart(index){
 
-        Your Beauty, Your Style, Your Glow ✨
+    const product = currentProducts[index];
 
-    </footer>
+    const existing = cart.find(item => item.name === product.name);
 
+    if(existing){
+        existing.quantity++;
+    }
+    else{
+        cart.push({
+            ...product,
+            quantity:1
+        });
+    }
 
-    <!-- JAVASCRIPT -->
+    updateCart();
 
-    <script>
+    alert(product.name + " added to cart 🛒");
+}
 
-        let cart = [];
 
+function buyNow(index){
 
-        // ADD PRODUCT TO CART
+    const product = currentProducts[index];
 
-        function addToCart(name, price) {
+    cart = [{
+        ...product,
+        quantity:1
+    }];
 
-            let existingProduct = cart.find(
-                item => item.name === name
-            );
+    updateCart();
 
-            if (existingProduct) {
+    openCheckout();
+}
 
-                existingProduct.quantity++;
 
-            } else {
+function updateCart(){
 
-                cart.push({
-                    name: name,
-                    price: price,
-                    quantity: 1
-                });
+    document.getElementById("cartCount").innerText =
+    cart.reduce((sum,item)=>sum + item.quantity,0);
 
-            }
+    const container = document.getElementById("cartItems");
 
-            updateCartCount();
+    container.innerHTML = "";
 
-            alert(name + " added to cart 🛒");
+    let total = 0;
 
-        }
+    if(cart.length === 0){
 
+        container.innerHTML =
+        "<p style='text-align:center;padding:20px;'>Your cart is empty 🛒</p>";
 
-        // UPDATE CART COUNT
+    }
 
-        function updateCartCount() {
+    cart.forEach((item,index)=>{
 
-            let totalQuantity = cart.reduce(
-                (total, item) => total + item.quantity,
-                0
-            );
+        total += item.price * item.quantity;
 
-            document.getElementById("cartCount").innerText =
-                totalQuantity;
+        container.innerHTML += `
 
-        }
+        <div class="cart-item">
 
+            <div>
+                <b>${item.brand}</b><br>
+                ${item.name}<br>
+                ₹${item.price} × ${item.quantity}
+            </div>
 
-        // OPEN CART
+            <button class="remove" onclick="removeItem(${index})">
+                Remove
+            </button>
 
-        function openCart() {
+        </div>
 
-            document.getElementById("cartOverlay").style.display =
-                "block";
+        `;
 
-            displayCart();
+    });
 
-        }
+    document.getElementById("cartTotal").innerText = total;
 
+}
 
-        // CLOSE CART
 
-        function closeCart() {
+function removeItem(index){
 
-            document.getElementById("cartOverlay").style.display =
-                "none";
+    cart.splice(index,1);
 
-        }
+    updateCart();
 
+}
 
-        // DISPLAY CART ITEMS
 
-        function displayCart() {
+function openCart(){
 
-            let cartItems =
-                document.getElementById("cartItems");
+    updateCart();
 
-            let cartTotal =
-                document.getElementById("cartTotal");
+    document.getElementById("cartOverlay").style.display = "block";
 
-            if (cart.length === 0) {
+}
 
-                cartItems.innerHTML =
-                    '<div class="empty-cart">Your cart is empty.</div>';
 
-                cartTotal.innerText = "0";
+function closeCart(){
 
-                return;
-            }
+    document.getElementById("cartOverlay").style.display = "none";
 
+}
 
-            let html = "";
-            let total = 0;
 
+function openCheckout(){
 
-            cart.forEach((item, index) => {
+    if(cart.length === 0){
 
-                let itemTotal =
-                    item.price * item.quantity;
+        alert("Please add a product first 🛒");
 
-                total += itemTotal;
+        return;
 
+    }
 
-                html += `
+    closeCart();
 
-                    <div class="cart-item">
+    document.getElementById("checkoutOverlay").style.display = "block";
 
-                        <div class="cart-item-info">
+}
 
-                            <strong>
-                                ${item.name}
-                            </strong>
 
-                            <div class="quantity">
-                                ₹${item.price} × ${item.quantity}
-                            </div>
+function closeCheckout(){
 
-                        </div>
+    document.getElementById("checkoutOverlay").style.display = "none";
 
-                        <div>
-                            ₹${itemTotal}
-                        </div>
+}
 
-                        <button
-                            class="remove-btn"
-                            onclick="removeFromCart(${index})">
 
-                            Remove
+function placeOrder(){
 
-                        </button>
+    const name =
+    document.getElementById("customerName").value.trim();
 
-                    </div>
+    const phone =
+    document.getElementById("customerPhone").value.trim();
 
-                `;
+    const address =
+    document.getElementById("customerAddress").value.trim();
 
-            });
+    const pin =
+    document.getElementById("customerPin").value.trim();
 
+    const payment =
+    document.querySelector('input[name="payment"]:checked');
 
-            cartItems.innerHTML = html;
 
-            cartTotal.innerText = total;
+    if(!name || !phone || !address || !pin || !payment){
 
-        }
+        alert("Please fill all required details 💗");
 
+        return;
 
-        // REMOVE PRODUCT
+    }
 
-        function removeFromCart(index) {
 
-            cart.splice(index, 1);
+    const orderNumber =
+    "BH" + Math.floor(10000 + Math.random() * 90000);
 
-            updateCartCount();
+    document.getElementById("orderId").innerText =
+    "#" + orderNumber;
 
-            displayCart();
 
-        }
+    closeCheckout();
 
+    document.getElementById("successOverlay").style.display =
+    "block";
 
-        // SEARCH PRODUCTS
 
-        function searchProducts() {
+    cart = [];
 
-            let searchText =
-                document.getElementById("searchInput")
-                .value
-                .toLowerCase();
+    updateCart();
 
-            let products =
-                document.querySelectorAll(".product");
+}
 
 
-            products.forEach(product => {
+function closeSuccess(){
 
-                let productName =
-                    product.querySelector("h3")
-                    .innerText
-                    .toLowerCase();
+    document.getElementById("successOverlay").style.display =
+    "none";
 
+}
 
-                if (productName.includes(searchText)) {
 
-                    product.style.display = "block";
+function filterCategory(category){
 
-                } else {
+    currentProducts =
+    category === "all"
+    ? products
+    : products.filter(p => p.category === category);
 
-                    product.style.display = "none";
+    displayProducts(currentProducts);
 
-                }
+}
 
-            });
 
-        }
+function filterBrand(brand){
 
+    currentProducts =
+    brand === "all"
+    ? products
+    : products.filter(p => p.brand === brand);
 
-        // FILTER PRODUCTS
+    displayProducts(currentProducts);
 
-        function filterProducts(category) {
+}
 
-            let products =
-                document.querySelectorAll(".product");
 
+function searchProducts(){
 
-            products.forEach(product => {
+    const search =
+    document.getElementById("search").value.toLowerCase();
 
-                if (
-                    category === "All" ||
-                    product.dataset.category === category
-                ) {
+    currentProducts = products.filter(p =>
 
-                    product.style.display = "block";
+        p.name.toLowerCase().includes(search) ||
+        p.brand.toLowerCase().includes(search) ||
+        p.category.toLowerCase().includes(search)
 
-                } else {
+    );
 
-                    product.style.display = "none";
+    displayProducts(currentProducts);
 
-                }
+}
 
-            });
 
-        }
+function goHome(){
 
-    </script>
+    document.getElementById("home")
+    .scrollIntoView({behavior:"smooth"});
+
+}
+
+
+function goProducts(){
+
+    document.getElementById("productsSection")
+    .scrollIntoView({behavior:"smooth"});
+
+}
+
+
+function showBrands(){
+
+    document.getElementById("brands")
+    .scrollIntoView({behavior:"smooth"});
+
+}
+
+
+displayProducts(products);
+
+updateCart();
+
+</script>
 
 </body>
 </html>
